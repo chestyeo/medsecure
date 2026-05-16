@@ -1,0 +1,17 @@
+name: Trigger Remediation Agent
+
+on:
+  push:
+    paths:
+      - 'findings/codeql.sarif.json'
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch to security-remediation-agent
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.REMEDIATION_DISPATCH_TOKEN }}
+          repository: ${{ github.repository_owner }}/security-remediation-agent
+          event-type: sarif-ready

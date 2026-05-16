@@ -7,6 +7,9 @@ A Flask application for processing and retrieving patient payment records.
 
 ```
 medsecure/
+├── .github/
+│   └── workflows/
+│       └── remediate.yml
 ├── app/
 │   ├── __init__.py
 │   └── routes/
@@ -61,6 +64,11 @@ pytest==7.4.0
 
 CodeQL scans run on every push and output findings to `findings/codeql.sarif.json`.
 Outstanding findings are triaged and remediated via the security remediation agent.
+
+### Automated Remediation Workflow
+
+The `.github/workflows/remediate.yml` workflow watches for changes to `findings/codeql.sarif.json`. When the file is updated, it dispatches a `sarif-ready` event to the `security-remediation-agent` repository via `repository_dispatch`, triggering automated triage and remediation.
+
 
 | Finding | Severity | Status |
 |---|---|---|

@@ -4,7 +4,7 @@ from flask import Blueprint, jsonify
 from app import get_db
 
 payments_bp = Blueprint('payments', __name__)
-API_KEY = os.environ.get("API_KEY")
+API_KEY = os.environ.get("PAYMENTS_API_KEY")
 
 @payments_bp.route('/payments/<payment_id>')
 def get_payment(payment_id):

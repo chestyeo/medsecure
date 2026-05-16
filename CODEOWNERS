@@ -1,0 +1,2 @@
+# payments module owned by backend security team
+app/routes/payments.py @medsecure/backend-security

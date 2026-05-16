@@ -33,23 +33,6 @@
               }
             },
             {
-              "id": "py/unsafe-deserialization",
-              "name": "UnsafeDeserialization",
-              "shortDescription": {
-                "text": "Deserialization of user-controlled data"
-              },
-              "defaultConfiguration": {
-                "level": "error"
-              },
-              "properties": {
-                "security-severity": "8.1",
-                "tags": [
-                  "security",
-                  "external/cwe/cwe-502"
-                ]
-              }
-            },
-            {
               "id": "py/hardcoded-credentials",
               "name": "HardcodedCredentials",
               "shortDescription": {
@@ -75,30 +58,6 @@
         }
       },
       "results": [
-        {
-          "ruleId": "py/unsafe-deserialization",
-          "ruleIndex": 1,
-          "level": "error",
-          "message": {
-            "text": "Unsafe deserialization of user-controlled data via pickle."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "app/api/handlers.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 45
-                }
-              }
-            }
-          ],
-          "partialFingerprints": {
-            "primaryLocationLineHash": "c9e1f3a7b2d4e8f0:1"
-          }
-        },
         {
           "ruleId": "py/sql-injection",
           "ruleIndex": 0,
@@ -178,7 +137,7 @@
         },
         {
           "ruleId": "py/hardcoded-credentials",
-          "ruleIndex": 2,
+          "ruleIndex": 1,
           "level": "error",
           "message": {
             "text": "Hardcoded API key found in source"
@@ -208,13 +167,6 @@
         {
           "location": {
             "uri": "app/routes/payments.py",
-            "uriBaseId": "%SRCROOT%"
-          },
-          "mimeType": "text/x-python"
-        },
-        {
-          "location": {
-            "uri": "app/api/handlers.py",
             "uriBaseId": "%SRCROOT%"
           },
           "mimeType": "text/x-python"

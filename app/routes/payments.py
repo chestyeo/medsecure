@@ -11,8 +11,8 @@ def get_payment(payment_id):
     # VULNERABLE — do not use in production
     # py/sql-injection: payment_id is passed directly into a SQL query
     # via string concatenation, allowing an attacker to manipulate the query.
-    query = "SELECT * FROM payments WHERE id = '" + payment_id + "'"
-    result = db.execute(query).fetchone()
+    query = "SELECT * FROM payments WHERE id = ?"
+    result = db.execute(query, (payment_id,)).fetchone()
 
     if result is None:
         return jsonify({'error': 'Payment not found'}), 404

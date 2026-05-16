@@ -72,6 +72,7 @@ The `.github/workflows/remediate.yml` workflow watches for changes to `findings/
 
 | Finding | Severity | Status |
 |---|---|---|
+| Unsafe deserialization in `api/handlers.py` | High | Outstanding |
 | SQL injection in `payments.py` | High | Outstanding |
 | Hardcoded API key in `payments.py` | High | Outstanding |
 

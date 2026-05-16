@@ -2,6 +2,8 @@ name: Trigger Remediation Agent
 
 on:
   push:
+    branches:
+      - main
     paths:
       - 'findings/codeql.sarif.json'
 

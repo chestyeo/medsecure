@@ -1,0 +1,177 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "CodeQL",
+          "version": "2.15.5",
+          "informationUri": "https://codeql.github.com",
+          "rules": [
+            {
+              "id": "py/sql-injection",
+              "name": "SqlInjection",
+              "shortDescription": {
+                "text": "SQL query built from user-controlled sources"
+              },
+              "fullDescription": {
+                "text": "Building a SQL query from user-controlled sources is vulnerable to insertion of malicious SQL code by the user."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "correctness",
+                  "external/cwe/cwe-089"
+                ],
+                "problem.severity": "error",
+                "security-severity": "8.8",
+                "precision": "high"
+              }
+            },
+            {
+              "id": "py/hardcoded-credentials",
+              "name": "HardcodedCredentials",
+              "shortDescription": {
+                "text": "Hardcoded credentials"
+              },
+              "fullDescription": {
+                "text": "Credentials are hardcoded in the source code, making them visible to anyone with access to the repository and impossible to rotate without a code change."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-798"
+                ],
+                "problem.severity": "error",
+                "security-severity": "9.8",
+                "precision": "medium"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "py/sql-injection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "This SQL query depends on a user-provided value. Possible SQL injection vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app/routes/payments.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 18,
+                  "endLine": 20,
+                  "endColumn": 72
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "process_payment",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "7e3f2a8c9d1b4f6e:1"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "app/routes/payments.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 15,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "User-controlled value flows from: request.args['payment_id']"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "app/routes/payments.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 20,
+                            "startColumn": 18
+                          }
+                        },
+                        "message": {
+                          "text": "SQL query constructed with unsanitised user input"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "py/hardcoded-credentials",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "Hardcoded API key found in source"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app/routes/payments.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 1,
+                  "endLine": 5,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "a1b2c3d4e5f6a7b8:1"
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "app/routes/payments.py",
+            "uriBaseId": "%SRCROOT%"
+          },
+          "mimeType": "text/x-python"
+        }
+      ]
+    }
+  ]
+}

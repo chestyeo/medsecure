@@ -74,6 +74,7 @@ The `.github/workflows/remediate.yml` workflow watches for changes to `findings/
 |---|---|---|
 | SQL injection in `payments.py` | High | Outstanding |
 | Hardcoded API key in `payments.py` | High | Outstanding |
+| Path injection in `documents.py` | High | Outstanding |
 
 ---
 

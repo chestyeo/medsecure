@@ -178,7 +178,7 @@
           "ruleId": "py/path-injection",
           "ruleIndex": 2,
           "level": "error",
-          "message": { "text": "This path depends on a user-provided value." },
+          "message": { "text": "This path depends on a user provided value." },
           "locations": [
             {
               "physicalLocation": {

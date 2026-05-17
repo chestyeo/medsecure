@@ -33,6 +33,18 @@
               }
             },
             {
+              "id": "py/path-injection",
+              "name": "PathInjection",
+              "shortDescription": { "text": "Uncontrolled data used in path expression" },
+              "fullDescription": { "text": "Accessing paths influenced by users can allow an attacker to read or overwrite sensitive files." },
+              "defaultConfiguration": { "level": "error" },
+              "properties": {
+                "tags": ["security", "external/cwe/cwe-022"],
+                "security-severity": "7.5",
+                "precision": "high"
+              }
+            },
+            {
               "id": "py/hardcoded-credentials",
               "name": "HardcodedCredentials",
               "shortDescription": {
@@ -161,12 +173,36 @@
           "partialFingerprints": {
             "primaryLocationLineHash": "a1b2c3d4e5f6a7b8:1"
           }
+        },
+        {
+          "ruleId": "py/path-injection",
+          "ruleIndex": 2,
+          "level": "error",
+          "message": { "text": "This path depends on a user-provided value." },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app/routes/documents.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": { "startLine": 34, "startColumn": 12, "endLine": 34, "endColumn": 58 }
+              }
+            }
+          ]
         }
       ],
       "artifacts": [
         {
           "location": {
             "uri": "app/routes/payments.py",
+            "uriBaseId": "%SRCROOT%"
+          },
+          "mimeType": "text/x-python"
+        },
+        {
+          "location": {
+            "uri": "app/routes/documents.py",
             "uriBaseId": "%SRCROOT%"
           },
           "mimeType": "text/x-python"

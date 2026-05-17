@@ -16,7 +16,7 @@
                 "text": "SQL query built from user-controlled source"
               },
               "fullDescription": {
-                "text": "Building SQL query from user-controlled sources is vulnerable to insertion of malicious SQL code by the users."
+                "text": "Building SQL query from user controlled sources is vulnerable to insertion of malicious SQL code by the users."
               },
               "defaultConfiguration": {
                 "level": "error"
